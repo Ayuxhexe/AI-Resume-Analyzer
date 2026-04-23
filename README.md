@@ -1,6 +1,12 @@
 # AI Resume Analyzer & Job Matcher
 
-A production-ready MERN application that lets users upload PDF resumes, analyze them with AI, estimate ATS readiness, extract skills, compare against job descriptions, and receive targeted improvement suggestions.
+Built an AI-powered Resume Analyzer to simulate real-world ATS screening and help users identify skill gaps for specific job roles.
+
+## Key Highlights
+- Designed scalable MERN architecture with modular services
+- Implemented AI fallback system (Gemini → Grok)
+- Built secure auth system (JWT + Google + OTP)
+- Optimized API retries for reliability
 
 ## Stack
 
