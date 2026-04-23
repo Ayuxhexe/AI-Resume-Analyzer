@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --bg: #f5f1e8;
+  --bg-secondary: #fbf8f1;
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-strong: rgba(255, 255, 255, 0.92);
+  --border: rgba(13, 38, 31, 0.12);
+  --text: #10261f;
+  --text-soft: #47645b;
+  --accent: #0f766e;
+  --accent-warm: #d97706;
+  --danger: #dc2626;
+}
+
+.dark {
+  color-scheme: dark;
+  --bg: #081410;
+  --bg-secondary: #0d1f19;
+  --surface: rgba(12, 27, 22, 0.8);
+  --surface-strong: rgba(16, 35, 29, 0.92);
+  --border: rgba(190, 225, 211, 0.14);
+  --text: #edf7f2;
+  --text-soft: #9ab8ac;
+  --accent: #34d399;
+  --accent-warm: #f59e0b;
+  --danger: #f87171;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    font-family: 'Manrope', sans-serif;
+    background:
+      radial-gradient(circle at top left, rgba(217, 119, 6, 0.2), transparent 28%),
+      radial-gradient(circle at top right, rgba(15, 118, 110, 0.22), transparent 30%),
+      linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg) 56%, var(--bg-secondary) 100%);
+    color: var(--text);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  textarea {
+    font: inherit;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply rounded-3xl border backdrop-blur-xl shadow-soft;
+    background: var(--surface);
+    border-color: var(--border);
+  }
+
+  .glass-panel-strong {
+    @apply rounded-3xl border backdrop-blur-xl shadow-soft;
+    background: var(--surface-strong);
+    border-color: var(--border);
+  }
+
+  .section-title {
+    font-family: 'Sora', sans-serif;
+    @apply text-lg font-semibold tracking-tight;
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold;
+    border-color: var(--border);
+    color: var(--text-soft);
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
