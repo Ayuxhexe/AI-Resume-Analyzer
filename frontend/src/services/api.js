@@ -1,9 +1,11 @@
 import axios from 'axios';
 import { AUTH_STORAGE_KEY } from './storageKeys.js';
 
+const API_TIMEOUT_MS = Number(import.meta.env.VITE_API_TIMEOUT_MS || 120000);
+
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL || '/api',
-  timeout: 30000,
+  timeout: API_TIMEOUT_MS,
 });
 
 api.interceptors.request.use((config) => {
@@ -25,7 +27,9 @@ api.interceptors.request.use((config) => {
 });
 
 export const extractApiErrorMessage = (error) =>
-  error?.response?.data?.message || error?.message || 'Something went wrong.';
+  error?.code === 'ECONNABORTED'
+    ? 'The server is taking longer than usual to wake up. Please try again in a moment.'
+    : error?.response?.data?.message || error?.message || 'Something went wrong.';
 
 export const buildAssetUrl = (fileUrl = '') => {
   if (!fileUrl) {
